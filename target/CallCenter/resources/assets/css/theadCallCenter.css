@@ -1,0 +1,8 @@
+/*Color cabecera tabla call center*/
+thead {
+	background-color: #2c80c5;
+	/*Añadi aqui*/
+	border-bottom: solid 5px #0F362D;
+	color: white;
+	text-align: center;
+}
