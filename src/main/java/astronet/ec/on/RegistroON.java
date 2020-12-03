@@ -37,7 +37,7 @@ public class RegistroON {
 	}
 	
 	public List<Registro> getListadoRegistro() {
-		
+		System.out.println("regonlis "+regdao.listarRegistros().toString() );
 		return regdao.listarRegistros();
 	}
 

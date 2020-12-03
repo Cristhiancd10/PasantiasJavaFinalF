@@ -50,10 +50,12 @@ public class ClienteController implements Serializable {
 	private Servicio servicio = new Servicio();
 	private Instalacion instalacion = new Instalacion();
 	private Agendamiento agendamiento = new Agendamiento();
-
+	
+	
 	/**
 	 * Declaraacion de variables
 	 */
+	private int res;
 	private int id;
 	private int idR;
 	private int idE;
@@ -71,6 +73,7 @@ public class ClienteController implements Serializable {
 
 	private int codigoReg;
 
+	
 	/**
 	 * Fin de la declaracion
 	 */
@@ -117,16 +120,20 @@ public class ClienteController implements Serializable {
 	public void init() {
 		cliente = new Cliente();
 		registro = new Registro();
-		instalacion=new Instalacion();
+		instalacion = new Instalacion();
 		servicio = new Servicio();
 		agendamiento = new Agendamiento();
 		empleados = empon.getListadoEmpleado();
-		//listadoAntena = anton.getListadoAntena();
+		// listadoAntena = anton.getListadoAntena();
 		listadoCliente = clion.getListadoCliente();
 		registros = regon.getListadoRegistro();
 		listaInstalaciones = inson.getListadoInstalacion();
-		empleado=new Empleado();
-
+		empleado = new Empleado();
+		res=0;
+		
+		
+		
+		
 	}
 
 	/**
@@ -154,7 +161,7 @@ public class ClienteController implements Serializable {
 		}
 
 	}
-	
+
 	public void loadData1() {
 		System.out.println("codigo editar " + idE);
 		if (idE == 0)
@@ -164,7 +171,7 @@ public class ClienteController implements Serializable {
 		System.out.println("prueba" + " " + empon.getEmpleado(idE));
 		System.out.println("hola" + " ");
 		System.out.println(empleado.getId() + " " + empleado.getCedula());
-
+		
 		
 
 	}
@@ -180,7 +187,6 @@ public class ClienteController implements Serializable {
 		registro = regon.getRegistro(idR);
 		agendamiento.setCodigoRegistroTemp(registro.getId());
 		System.out.println("Nombre del cliente " + registro.getCliente().getNombre());
-	
 
 	}
 
@@ -394,7 +400,7 @@ public class ClienteController implements Serializable {
 	public void setEmpCon(EmpleadoController empCon) {
 		this.empCon = empCon;
 	}
-	
+
 	public int getIdE() {
 		return idE;
 	}
@@ -402,13 +408,10 @@ public class ClienteController implements Serializable {
 	public void setIdE(int idE) {
 		this.idE = idE;
 	}
-	
 
 	/*
 	 * Hasta aqui llega la creacion de los getters and setters
 	 */
-
-	
 
 	/**
 	 * Metodo para dirigirnos a la pagina editarClientes
@@ -452,21 +455,23 @@ public class ClienteController implements Serializable {
 	 * @return
 	 */
 	public String buscarCedula() {
-try {
-	if (validadorDeCedula(cliente.getCedula())) {
-		cliente = clion.getClienteCedula(cliente.getCedula());
-		registro.setIdClienteTemp(cliente.getId());
-		fechaHora();
-		datoR();
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Credenciales Correctas"));
+		try {
+			if (validadorDeCedula(cliente.getCedula())) {
+				cliente = clion.getClienteCedula(cliente.getCedula());
+				registro.setIdClienteTemp(cliente.getId());
+				fechaHora();
+				datoR();
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
+						"Credenciales Correctas", "Credenciales Correctas"));
 
-	}
-}catch (Exception e) {
-	// TODO: handle exception
-	FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Credenciales Incorrectas"));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
+					"Credenciales Incorrectas", "Credenciales Incorrectas"));
 
-}
-		
+		}
+
 		return null;
 
 	}
@@ -475,10 +480,21 @@ try {
 	 * Metodo para la busqueda del cliente por el nombre
 	 */
 	public void buscarNombre() {
-		cliente = clion.getClienteNombre(cliente.getNombre());
-		registro.setIdClienteTemp(cliente.getId());
-		fechaHora();
-		datoR();
+	
+		try {
+			cliente = clion.getClienteNombre(cliente.getNombre());
+			registro.setIdClienteTemp(cliente.getId());
+			fechaHora();
+			datoR();
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
+					"Credenciales Correctas", "Credenciales Correctas"));
+		}catch (Exception e) {
+			// TODO: handle exception
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
+					"Credenciales Incorrectas", "Credenciales Incorrectas"));
+			cliente.setNombre("");
+		}	
+		
 	}
 
 	/**
@@ -497,14 +513,14 @@ try {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Metodo para editar los clientes
 	 * 
 	 * @return
 	 */
 	public String cargarDatosCallCenter() {
-		
+
 		try {
 			clion.guardar(cliente);
 		} catch (Exception e) {
@@ -520,7 +536,11 @@ try {
 	 * @return
 	 */
 	public String guardarAgendamiento() {
+		
 		try {
+			System.out.println("Tecnico "+ agendamiento.getTecnicoResponsable());
+			System.out.println("Registro "+ registro.getId());
+			agendamiento.setRegistro(registro);
 			agon.guardar(agendamiento);
 			regon.guardar(registro);
 			init();
@@ -538,7 +558,7 @@ try {
 		try {
 			System.out.println("gol");
 			for (int i = 0; i < registro.getCliente().getServicio().size(); i++) {
-			//	IP = registro.getCliente().getServicio().get(i).getIp();
+				// IP = registro.getCliente().getServicio().get(i).getIp();
 				Runtime.getRuntime().exec("C:\\Windows\\System32\\cmd.exe /k start ping " + IP + " -t");
 				fechaHora();
 				System.out.println("IP obtenida: " + IP);
@@ -558,8 +578,8 @@ try {
 
 		try {
 			for (int i = 0; i < registro.getCliente().getServicio().size(); i++) {
-				//IP = registro.getCliente().getServicio().get(i).getIp();
-				//Password = registro.getCliente().getServicio().get(i).getPassword();
+				// IP = registro.getCliente().getServicio().get(i).getIp();
+				// Password = registro.getCliente().getServicio().get(i).getPassword();
 				Runtime.getRuntime().exec("C:\\Winbox.exe " + IP + " admin connect " + Password);
 				System.out.println("IP obtenida: " + IP);
 				System.out.println("hola2");
@@ -592,10 +612,10 @@ try {
 
 		try {
 
-			//ant = anton.consultarAntena(cliente.getCodigoAntenaTemp());
-			//cliente.setAntena(ant);
+			// ant = anton.consultarAntena(cliente.getCodigoAntenaTemp());
+			// cliente.setAntena(ant);
 		} catch (Exception e) {
-			//cliente.setAntena(null);
+			// cliente.setAntena(null);
 			// TODO Auto-generated catch block
 			/*
 			 * FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -689,8 +709,8 @@ try {
 
 		return listaSolucion;
 	}
-	
-	//matriz para la accion de cada registro del callcenter
+
+	// matriz para la accion de cada registro del callcenter
 	public static class accion {
 
 		public String carLabel;
@@ -739,7 +759,7 @@ try {
 			registro.setCliente(cli);
 
 		} catch (Exception e) {
-			//registro.setCliente(null);
+			// registro.setCliente(null);
 			// TODO Auto-generated catch block
 			/*
 			 * FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -758,7 +778,7 @@ try {
 			cli = regon.consultarCliente(servicio.getIdClienteTemp());
 			servicio.setCliente(cli);
 		} catch (Exception e) {
-			//registro.setCliente(null);
+			// registro.setCliente(null);
 			// TODO Auto-generated catch block
 			/*
 			 * FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -777,7 +797,7 @@ try {
 			registro.setEmpleado(emp);
 
 		} catch (Exception e) {
-			//registro.setEmpleado(null);
+			// registro.setEmpleado(null);
 			// TODO Auto-generated catch block
 			/*
 			 * FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -787,7 +807,6 @@ try {
 			e.printStackTrace();
 		}
 	}
-
 
 	/**
 	 * Metodo de conltar Registro para el agendamiento
@@ -809,10 +828,6 @@ try {
 			e.printStackTrace();
 		}
 	}
-
-	
-
-
 
 	/**
 	 * Metodo para la fecha del sistema
@@ -889,15 +904,12 @@ try {
 		}
 
 		if (!cedulaCorrecta) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Cedula Incorrecta"));
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Cedula Incorrecta"));
 
 		}
 		return cedulaCorrecta;
 	}
-	
-
-	
-	
 
 	/**
 	 * Metodo para guardar los datos de la instalacion
@@ -915,7 +927,7 @@ try {
 
 		return null;
 	}
-	
+
 	/**
 	 * Metodo de consultar Empleado para la instalacion
 	 */
@@ -926,18 +938,16 @@ try {
 			emp = regon.consultarEmpleado(instalacion.getCodigoEmpTemp());
 			instalacion.setEmpleado(emp);
 		} catch (Exception e) {
-			//instalacion.setEmpleado(null);
+			// instalacion.setEmpleado(null);
 			// TODO Auto-generated catch block
 			/*
 			 * FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,
 			 * e.getMessage(), "Error"); fc.addMessage("txtEmpleado1", msg);
 			 */
-			//e.printStackTrace();
+			// e.printStackTrace();
 		}
 	}
-	
 
-	
 	/*
 	 * Metodo para de radioButton del Modo de Servicio
 	 */
@@ -978,49 +988,48 @@ try {
 
 		return servicioLista;
 	}
-	
-	  /*
-	   * Crear empleado 
-	   */
-	  
-	  public String editarEm(int codigo) {
 
-			return "registrarEmpleado?faces-redirect=true&id=" + codigo;
+	/*
+	 * Crear empleado
+	 */
+
+	public String editarEm(int codigo) {
+
+		return "registrarEmpleado?faces-redirect=true&id=" + codigo;
+	}
+
+	public String eliminar(int codigo) {
+
+		System.out.println("codigo borrar " + codigo);
+
+		try {
+			empon.borrar(codigo);
+			init();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error " + e.getMessage());
+			e.printStackTrace();
 		}
-		
-		public String eliminar(int codigo) {
 
-				System.out.println("codigo borrar " + codigo);
-				
-				try {
-					empon.borrar(codigo);
-					init();
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					System.out.println("Error "+ e.getMessage());
-					e.printStackTrace();
-				}
-				
-				return null;
-			}
+		return null;
+	}
 
-		
-		/*
-		 * Metodo para guardar o actualizar empleado
-		 * 
-		 */
-		
-		public String guardarEmpleado() {
-			try {
-				if (validadorDeCedula(empleado.getCedula())) {
+	/*
+	 * Metodo para guardar o actualizar empleado
+	 * 
+	 */
+
+	public String guardarEmpleado() {
+		try {
+			if (validadorDeCedula(empleado.getCedula())) {
 				empon.guardar(empleado);
 				init();
 				return "listadoEmpleado";
-				}
-			}catch(Exception e) {
-				e.printStackTrace();
 			}
-			return null;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		return null;
+	}
 
 }

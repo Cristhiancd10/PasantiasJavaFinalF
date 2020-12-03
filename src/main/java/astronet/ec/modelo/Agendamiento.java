@@ -9,6 +9,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -33,7 +34,6 @@ public class Agendamiento {
 	private String tecnicoAsigna;
 	
 	@Column(name = "agd_tecResponsable")
-
 	private String tecnicoResponsable;
 	
 	@Column(name = "agd_realizado")
@@ -50,6 +50,7 @@ public class Agendamiento {
 	@JoinColumn(name="regagendamiento_fk")
 	//modofique esto
 	//@JsonIgnore
+	@JsonBackReference
 	private Registro registro ;
 
 	public int getId() {

@@ -101,12 +101,12 @@ public class Servicios {
 	 *Metodo para listar todas las visitas tecnicas 
 	 * @return
 	 */
-//	@GET
-//	@Path("listRgVT")
-//	@Produces("application/json")
-//	public List<Registro> listarRgVT(){
-//		return regon.listadoRegistrosVT();
-//	}
+	@GET
+	@Path("listRgVT")
+	@Produces("application/json")
+	public List<Registro> listarRgVT(){
+		return regon.getListadoRegistro();
+	}
 	
 		
 	@GET

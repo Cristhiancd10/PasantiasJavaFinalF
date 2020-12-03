@@ -166,7 +166,7 @@
 							</div>
 
 							<div class="form-group col-xs-6">
-<!-- 								  <label for="sel1">Ingresado por:</label>      -->
+<!-- 								  <label for="sel1">Ingresado por:</label>      -->
 								<h:selectOneMenu class="form-control" id="sel0"
 									value="#{clienteController.registro.empleado.nombre}">
 									<f:selectItems value="#{clienteController.registros}"
@@ -175,7 +175,7 @@
 								</h:selectOneMenu>
 							</div>
 							<div class="form-group">
-<!-- 								  <label for="sel1">Problema:</label>      -->
+<!-- 								  <label for="sel1">Problema:</label>      -->
 								<h:selectOneMenu class="form-control" id="sel4"
 									value="#{clienteController.registro.problema}">
 									<f:selectItems value="#{clienteController.problemas1}"
@@ -195,7 +195,7 @@
 					</div>
 
 					<div class="form-group col-sm-6">
-						  <label for="sel1">Revisado por:</label>     
+						  <label for="sel1">Revisado por:</label>     
 						<h:selectOneMenu class="form-control" id="sel1"
 							value="#{clienteController.agendamiento.tecnicoAsigna}">
 							<f:selectItem itemLabel="SELECCIONAR" itemalue="SELECCIONAR"/>
@@ -207,7 +207,7 @@
 
 					
 					<div class="form-group col-sm-6">
-						  <label for="selA">Acción:</label>     
+						  <label for="selA">Acción:</label>     
 						<h:selectOneMenu class="form-control" id="selAc"
 							value="#{clienteController.registro.accion}">
 							<f:ajax  listener="#{clienteController.fechaHora()}" /> 
@@ -217,7 +217,7 @@
 					</div>
 
 					<div class="form-group col-sm-12">
-						  <label for="sel3">Asignado a:</label>
+						  <label for="sel3">Asignado a:</label>
 						<h:selectOneMenu class="form-control" id="sel3"
 							value="#{clienteController.agendamiento.tecnicoResponsable}">
 							<f:selectItem itemLabel="Seleccionar" itemalue="Seleccionar"/>
@@ -234,15 +234,7 @@
 							class="form-control" id="exampleFormControlTextarea11" rows="5" />
 					</div>
 
-					<div class="btnsIngre_Agen">
-						<h:commandButton action="#{clienteController.cmd()}"
-							onclick="#{clienteController.consultarRegistro()}"
-							class="btn btn-primary botonesPW" value="PING" />
-
-						<h:commandButton action="#{clienteController.winbox()}"
-							immediate="true" class="btn btn-primary" value="WINBOX" />
-
-					</div>
+					
 
 					<div class="btnsIngre_Agen">
 						<h:commandButton

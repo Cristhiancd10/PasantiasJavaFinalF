@@ -23,8 +23,8 @@
 	<link rel="stylesheet" href="resources/assets/css/table.css" />
 	<link rel="stylesheet" href="resources/assets/css/fondo.css" />
 	<link rel="stylesheet" href="resources/assets/css/theadCallCenter.css" />
-
-	<script
+                     
+    <script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -38,14 +38,14 @@
 		var boton1=document.getElementById("boton1");
 		var boton12=document.getElementById("boton12")
 		if(dep.innerText != 'Radio'){
-			alert("Bloqueado no tienes los permisos establecidos contacte con tu administrador")
+			//alert("Bloqueado no tienes los permisos establecidos contacte con tu administrador")
 				boton.disabled=true;
 			boton1.disabled=true;
 			boton12.disabled=true;
 				
 			}
 		else{
-			alert("Bievenido");
+			//alert("Bievenido");
 			boton.disabled =false;
 			boton1.disabled=false;
 			boton12.disabled=false;
@@ -78,11 +78,11 @@
 				</ul></li>
 
 			<li class="dropdown"><a class="dropdown-toggle"
-				data-toggle="dropdown" href="#" onclick="acceso()">Clientes<span
+				data-toggle="dropdown" href="#" onclick="acceso()">Datos<span
 					class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li><a href="clientesRadio.xhtml" id="boton">Clientes</a></li>
-					<li><a href="listadoEmpleado.xhtml" id="boton1">Empleado</a></li>
+					<li><a href="listadoEmpleado.xhtml" id="boton1">Empleados</a></li>
 				</ul></li>
 
 		</ul>

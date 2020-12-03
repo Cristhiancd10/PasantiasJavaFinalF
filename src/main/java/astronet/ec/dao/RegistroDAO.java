@@ -72,9 +72,11 @@ public class RegistroDAO {
 			registro.getCliente().getLatitud();
 			registro.getCliente().getLongitud();
 			registro.getEmpleado().getNombre();
+			
 			//agrego esto
-			//registro.getAgendamiento().size();
-			//registro.getCliente().getServicio().size();
+			registro.getCliente().getServicio().size();
+			registro.getAgendamiento().size();
+
 		}
 		return registros;
 	}

@@ -1,5 +1,4 @@
 package astronet.ec.modelo;
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -17,6 +16,7 @@ import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "Registro")
@@ -73,7 +73,8 @@ public class Registro implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "regagendamiento_fk")
 	//modifico esto
-	@JsonIgnore
+	//@JsonIgnore
+	@JsonManagedReference
 	private List<Agendamiento> agendamiento;
 	
 	@Transient
@@ -166,10 +167,6 @@ public class Registro implements Serializable {
 		this.accion = accion;
 	}
 
-
-
-
-
-	
+		
 
 }
