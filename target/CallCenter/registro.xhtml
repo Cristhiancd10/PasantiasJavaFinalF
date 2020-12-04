@@ -166,7 +166,7 @@
 						</h:column>
 
 						<h:column>
-							<f:facet name="header">Tec. Responsable</f:facet>
+							<f:facet name="header">Tec. Reporta</f:facet>
 
 							<h:column>
 								#{registro.empleado.nombre}
@@ -176,7 +176,7 @@
 						</h:column>
 						
 						<h:column>
-							<f:facet name="header">Tec. Responsable trtg</f:facet>
+							<f:facet name="header">Tec. Responsable</f:facet>
 
 							
 								<ui:repeat value="${registro.agendamiento}" var="age">
@@ -189,6 +189,34 @@
 
 						</h:column>
 						
+						<h:column>
+							<f:facet name="header">Tec. Asigna</f:facet>
+
+							
+								<ui:repeat value="${registro.agendamiento}" var="age">
+									<h:column>
+									#{age.tecnicoAsigna}
+									</h:column>
+
+								</ui:repeat>
+							
+
+						</h:column>
+						
+						
+						<h:column>
+							<f:facet name="header">Observaciones Agendamiento</f:facet>
+
+							
+								<ui:repeat value="${registro.agendamiento}" var="age">
+									<h:column>
+									#{age.observaciones}
+									</h:column>
+
+								</ui:repeat>
+							
+
+						</h:column>
 						
 											
 						

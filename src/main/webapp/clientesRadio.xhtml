@@ -255,112 +255,161 @@
 						
 				<h:column>
 					<f:facet name="header" data-field="city">Tipo Servicio</f:facet>
-					<h:dataTable style="text-align:center;" value="#{cliente.servicio}"
-						var="servicio">
-						<h:column>
-								#{servicio.tipoServicio}
+					 <h:column>
+								
+								<ui:repeat value="${cliente.servicio}" var="servicio">
+									<h:column>
+									#{servicio.tipoServicio}
+									</h:column>
+
+								</ui:repeat>
 						</h:column>
-					</h:dataTable>
+					
 				</h:column>
 				
 				<h:column>
 					<f:facet name="header" data-field="salary" data-sortable="true">Numero Contrato</f:facet>
-					<h:dataTable style="text-align:center;" value="#{cliente.servicio}"
-						var="servicio">
+					
 						<h:column>
-								#{servicio.numeroContrato}
+								<ui:repeat value="${cliente.servicio}" var="servicio">
+									<h:column>
+									#{servicio.numeroContrato}
+									</h:column>
+
+								</ui:repeat>
+
 						</h:column>
-					</h:dataTable>
+					
 				</h:column>
 
 				<h:column>
 					<f:facet name="header" data-field="city">Fecha Contrato</f:facet>
-					<h:dataTable style="text-align:center;" value="#{cliente.servicio}"
-						var="servicio">
+					
 						<h:column>
-								#{servicio.fechaContrato}
+								
+								<ui:repeat value="${cliente.servicio}" var="servicio">
+									<h:column>
+									#{servicio.fechaContrato}
+									</h:column>
+
+								</ui:repeat>
+								
 						</h:column>
-					</h:dataTable>
+					
 				</h:column>
 
 				<h:column>
 					<f:facet name="header" data-field="city">Router Vendido</f:facet>
-					<h:dataTable style="text-align:center;" value="#{cliente.servicio}"
-						var="servicio">
-						<h:column>
-								#{servicio.routerVendido}
+					<h:column>
+								
+								<ui:repeat value="${cliente.servicio}" var="servicio">
+									<h:column>
+									#{servicio.routerVendido}
+									</h:column>
+
+								</ui:repeat>
+								
 						</h:column>
-					</h:dataTable>
+					
 				</h:column>
+				
 				
 				<h:column>
 					<f:facet name="header" data-field="city">Observaciones</f:facet>
-					<h:dataTable style="text-align:center;" value="#{cliente.servicio}"
-						var="servicio">
-						<h:column>
-								#{servicio.observaciones}
+					<h:column>
+								
+								<ui:repeat value="${cliente.servicio}" var="servicio">
+									<h:column>
+									#{servicio.observaciones}
+									</h:column>
+
+								</ui:repeat>
+								
 						</h:column>
-					</h:dataTable>
 				</h:column>
 				
 				<h:column>
 					<f:facet name="header" data-field="city">Direccion IP</f:facet>
-					<h:dataTable style="text-align:center;" value="#{cliente.servicio}"
-						var="servicio">
-						<h:column>
+					<h:column>
+								
+								<ui:repeat value="${cliente.servicio}" var="servicio">
+									<h:column>
+									
+									</h:column>
+
+								</ui:repeat>
 								
 						</h:column>
-					</h:dataTable>
-				</h:column>
+						</h:column>
 
 				<h:column>
 					<f:facet name="header" data-field="city">PLAN</f:facet>
-					<h:dataTable style="text-align:center;" value="#{cliente.servicio}"
-						var="servicio">
-						<h:column>
+					<h:column>
+								
+								<ui:repeat value="${cliente.servicio}" var="servicio">
+									<h:column>
+									
+									</h:column>
+
+								</ui:repeat>
 								
 						</h:column>
-					</h:dataTable>
 				</h:column>
 
 				<h:column>
 					<f:facet name="header" data-field="city">Contraseña</f:facet>
-					<h:dataTable style="text-align:center;" value="#{cliente.servicio}"
-						var="servicio">
-						<h:column>
+					<h:column>
+								
+								<ui:repeat value="${cliente.servicio}" var="servicio">
+									<h:column>
+									
+									</h:column>
+
+								</ui:repeat>
 								
 						</h:column>
-					</h:dataTable>
 				</h:column>
 
 				<h:column>
 					<f:facet name="header" data-field="city">Router</f:facet>
-					<h:dataTable style="text-align:center;" value="#{cliente.servicio}"
-						var="servicio">
-						<h:column>
+					<h:column>
+								
+								<ui:repeat value="${cliente.servicio}" var="servicio">
+									<h:column>
+									
+									</h:column>
+
+								</ui:repeat>
 								
 						</h:column>
-					</h:dataTable>
 				</h:column>
 				
 				<h:column>
 					<f:facet name="header" data-field="city">Antena</f:facet>
-					<h:dataTable style="text-align:center;" value="#{cliente.servicio}"
-						var="servicio">
-						<h:column>
+					<h:column>
+								
+								<ui:repeat value="${cliente.servicio}" var="servicio">
+									<h:column>
+									
+									</h:column>
+
+								</ui:repeat>
 								
 						</h:column>
-					</h:dataTable>
 				</h:column>
 				
 				<h:column>
 					<f:facet name="header" data-field="city">Nodo</f:facet>
-					<h:dataTable style="text-align:center;" value="#{cliente.servicio}"
-						var="servicio">
-						<h:column>
+					<h:column>
+								
+								<ui:repeat value="${cliente.servicio}" var="servicio">
+									<h:column>
+									
+									</h:column>
+
+								</ui:repeat>
 								
 						</h:column>
-					</h:dataTable>
 				</h:column>
 				
 				<h:column>
