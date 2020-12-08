@@ -3,6 +3,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:h="http://java.sun.com/jsf/html">
 	
 
@@ -70,5 +71,109 @@
 
 	</div>
 	</nav>
+	
+	<!-- Inicio boton Nueva Solicitud -->
+	<div class="anchoBoton btnSolicitud">
+		<h:form>
+			<div>
+				<p:growl id="growl" showDetail="true">
+					<p:autoUpdate></p:autoUpdate>
+				</p:growl>
+			</div>
+
+
+			<!-- Ventana Modal -->
+			<!-- The Modal -->
+			<div class="modal fade" id="myModal">
+				<div class="modal-dialog">
+					<div class="modal-content">
+
+						<!-- Modal Header -->
+						<div class="modal-header" style="background-color: #048DE5;">
+							<h4 class="modal-title" style="color: aliceblue;">Instalacion</h4>
+							<button type="button" class="close" data-dismiss="modal">Cerrar</button>
+						</div>
+
+						<!-- Modal body -->
+						<div class="modal-body">
+							<div class="form-group col-sm-5">
+								<div class="input-group marginBuscar">
+									<h:inputText class="form-control"
+										value="#{clienteController.instalacion.codigoEmpTemp}"
+										a:placeholder="insid" id="txtEmpleado123" rendered="">
+									</h:inputText>
+									<!-- 	<h:panelGroup id="datosPersona124">
+										<h:message for="txtEmpleado123" />
+							#{clienteController.instalacion.empleado.nombre}
+					</h:panelGroup> -->
+								</div>
+							</div>
+
+							<div class="form-group">
+
+								<h:selectOneRadio
+									value="#{clienteController.instalacion.tipoServicio}">
+									<f:ajax listener="#{clienteController.consultarEmpleado1()}"
+										render="datosPersona124" />
+									<f:selectItems value="#{clienteController.listaServicioRB}"
+										var="sr" itemLabel="#{sr.servicioLabel}"
+										itemValue="#{sr.servicioValue}" />
+								</h:selectOneRadio>
+							</div>
+
+							<div class="form-group">
+								<h:inputText type="text" class="form-control"
+									a:placeholder="Nombres"
+									value="#{clienteController.instalacion.nombre}" />
+							</div>
+							<div class="form-group">
+								<h:inputText type="text" class="form-control" id="Direccion"
+									a:placeholder="Direccion"
+									value="#{clienteController.instalacion.direccion}" />
+							</div>
+							<div class="form-group">
+								<h:inputText type="text" class="form-control" id="Telefonos"
+									a:placeholder="Telefonos"
+									value="#{clienteController.instalacion.telefono}" />
+							</div>
+							<div class="form-group">
+								<h:inputText type="text" class="form-control" id="Coordenada"
+									a:placeholder="Coordenadas"
+									value="#{clienteController.instalacion.coordenadas}" />
+							</div>
+							<div class="form-group">
+								<label for="exampleFormControlTextarea1">Observaciones</label>
+								<h:inputTextarea
+									value="#{clienteController.instalacion.observaciones}"
+									class="form-control" id="exampleFormControlTextarea11" rows="5" />
+							</div>
+							<div class="form-group">
+								  <label for="sel1">Tecnico:</label>  
+								<h:selectOneMenu
+									value="#{clienteController.instalacion.tecnico}"
+									id="txtEmpleado12345">
+									<f:selectItem itemLabel="Seleccionar" itemalue="Seleccionar"/>
+									<f:selectItems value="#{clienteController.empleados}"
+										var="empleado" itemLabel="#{empleado.nombre}"
+										itemValue="#{empleado.nombre}" />
+								</h:selectOneMenu>
+							</div>
+
+
+						</div>
+
+						<!-- Modal footer -->
+						<div class="modal-footer">
+							<h:commandButton class="btn btn-primary" value="Guardar"
+								action="#{clienteController.crearInstalacion()}" />
+							<h:commandButton class="btn btn-danger" data-dismiss="modal"
+								value="Cerrar" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:form>
+
+	</div>
 </body>
 </html>

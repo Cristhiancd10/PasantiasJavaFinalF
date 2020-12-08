@@ -63,6 +63,9 @@ public class ClienteON {
 
 	public Cliente getClienteNombre(String nombre) {
 		Cliente aux = clidao.buscarNombre(nombre);
+		
+		
+		
 		System.out.println(aux.getCedula());
 		System.out.println(aux.getNombre());
 	

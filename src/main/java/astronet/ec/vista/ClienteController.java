@@ -462,13 +462,13 @@ public class ClienteController implements Serializable {
 				fechaHora();
 				datoR();
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
-						"Credenciales Correctas", "Credenciales Correctas"));
+						"Aviso", "Credenciales Correctas"));
 
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
-					"Credenciales Incorrectas", "Credenciales Incorrectas"));
+					"Aviso", "Credenciales Incorrectas"));
 
 		}
 
@@ -487,11 +487,11 @@ public class ClienteController implements Serializable {
 			fechaHora();
 			datoR();
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
-					"Credenciales Correctas", "Credenciales Correctas"));
+					"Aviso", "Credenciales Correctas"));
 		}catch (Exception e) {
 			// TODO: handle exception
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
-					"Credenciales Incorrectas", "Credenciales Incorrectas"));
+					"Aviso", "Credenciales Incorrectas"));
 			cliente.setNombre("");
 		}	
 		

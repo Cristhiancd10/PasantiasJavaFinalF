@@ -17,7 +17,8 @@ public class ClienteDAO {
 	private EntityManager em;
 	
 	public void save(Cliente cli) {
-		if (this.read(cli.getId())!=null) {
+		if (this.read3(cli.getId())!=null) {
+			System.out.println("funciona update");
 			this.update(cli);
 		}else 
 			this.create(cli);
