@@ -12,6 +12,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
+import astronet.ec.modelo.Agendamiento;
 import astronet.ec.modelo.Empleado;
 import astronet.ec.modelo.Instalacion;
 import astronet.ec.on.EmpleadoON;
@@ -129,6 +130,7 @@ public class InstalacionController implements Serializable {
 	public String crearInstalacion() {
 
 		try {
+			
 			inson.crearI(instalacion);
 			init();
 		} catch (Exception e) {

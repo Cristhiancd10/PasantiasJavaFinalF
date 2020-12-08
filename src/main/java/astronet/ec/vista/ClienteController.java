@@ -925,7 +925,7 @@ public class ClienteController implements Serializable {
 			e.printStackTrace();
 		}
 
-		return null;
+		return "listadoInstalaciones";
 	}
 
 	/**

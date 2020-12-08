@@ -17,7 +17,7 @@
 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="resources/assets/css/table.css" />
-<!-- 	<link rel="stylesheet" href="resources/assets/css/fondo.css" /> -->
+	<link rel="stylesheet" href="resources/assets/css/fondo.css" /> 
 	<link rel="stylesheet" href="resources/assets/css/instaEdicion.css" />
 
 	<script
@@ -79,75 +79,77 @@
 
 				<div class="panel-heading">Instalacion Nueva</div>
 
-				<div class="panel-body ">
-					<div class="modal-body ">
-
-						<div class="form-group">
-							<h:inputText type="text" class="form-control"
-								a:placeholder="ID Registro"
-								value="#{clienteController.instalacion.codigoEmpTemp}"
-								id="txtEmpleado12" >
-							</h:inputText>
-							<h:panelGroup id="datosPersona12">
-								<h:message for="txtEmpleado12" />
+				<div class="modal-body">
+							<div class="form-group col-sm-5">
+								<div class="input-group marginBuscar">
+									<h:inputText class="form-control"
+										value="#{clienteController.instalacion.codigoEmpTemp}"
+										a:placeholder="insid" id="txtEmpleado123" rendered="">
+									</h:inputText>
+									<!-- 	<h:panelGroup id="datosPersona124">
+										<h:message for="txtEmpleado123" />
 							#{clienteController.instalacion.empleado.nombre}
-					</h:panelGroup>
-						</div>
-						
-								<div class="form-group">
-						
-							<h:selectOneRadio
-								value="#{instalacionController.instalacion.tipoServicio}">
-								<f:ajax execute="txtEmpleado12" listener="#{instalacionController.consultarEmpleado1()}" render="datosPersona12"/>
-								<f:selectItems value="#{instalacionController.listaServicioRB}"
-									var="sr" itemLabel="#{sr.servicioLabel}"
-									itemValue="#{sr.servicioValue}" />
-							</h:selectOneRadio>
-						</div>
+					</h:panelGroup> -->
+								</div>
+							</div>
 
-						<div class="form-group">
-							<h:inputText type="text" class="form-control"
-								a:placeholder="Nombres"
-								value="#{instalacionController.instalacion.nombre}" />
-						</div>
-						<div class="form-group">
-							<h:inputText type="text" class="form-control" id="Direccion"
-								a:placeholder="Direccion"
-								value="#{instalacionController.instalacion.direccion}" />
-						</div>
-						<div class="form-group">
-							<h:inputText type="text" class="form-control" id="Telefonos"
-								a:placeholder="Telefonos"
-								value="#{instalacionController.instalacion.telefono}" />
-						</div>
-						<div class="form-group">
-							<h:inputText type="text" class="form-control" id="Coordenada"
-								a:placeholder="Coordenadas"
-								value="#{instalacionController.instalacion.coordenadas}" />
-						</div>
-						<div class="form-group">
+							<div class="form-group">
+
+								<h:selectOneRadio
+									value="#{clienteController.instalacion.tipoServicio}">
+									<f:ajax listener="#{clienteController.consultarEmpleado1()}"
+										render="datosPersona124" />
+									<f:selectItems value="#{clienteController.listaServicioRB}"
+										var="sr" itemLabel="#{sr.servicioLabel}"
+										itemValue="#{sr.servicioValue}" />
+								</h:selectOneRadio>
+							</div>
+
+							<div class="form-group">
+								<h:inputText type="text" class="form-control"
+									a:placeholder="Nombres"
+									value="#{clienteController.instalacion.nombre}" />
+							</div>
+							<div class="form-group">
+								<h:inputText type="text" class="form-control" id="Direccion"
+									a:placeholder="Direccion"
+									value="#{clienteController.instalacion.direccion}" />
+							</div>
+							<div class="form-group">
+								<h:inputText type="text" class="form-control" id="Telefonos"
+									a:placeholder="Telefonos"
+									value="#{clienteController.instalacion.telefono}" />
+							</div>
+							<div class="form-group">
+								<h:inputText type="text" class="form-control" id="Coordenada"
+									a:placeholder="Coordenadas"
+									value="#{clienteController.instalacion.coordenadas}" />
+							</div>
+							<div class="form-group">
 								<label for="exampleFormControlTextarea1">Observaciones</label>
-						<h:inputTextarea
-							value="#{instalacionController.instalacion.observaciones}"
-							class="form-control" id="exampleFormControlTextarea1" rows="5" />
-						</div>
-						<div class="form-group">
-							  <label for="sel1">Tecnico:</label>  
-							<h:selectOneMenu value="#{instalacionController.instalacion.tecnico}"
-								id="txtEmpleado1">
-								<f:selectItem itemLabel="SELECCIONAR" itemalue="SELECCIONAR"/>
-								<f:selectItems value="#{instalacionController.empleados}"
-									var="empleado" itemLabel="#{empleado.nombre}"
-									itemValue="#{empleado.nombre}" />
-							</h:selectOneMenu>
-						</div>
+								<h:inputTextarea
+									value="#{clienteController.instalacion.observaciones}"
+									class="form-control" id="exampleFormControlTextarea11" rows="5" />
+							</div>
+							<div class="form-group">
+								  <label for="sel1">Tecnico:</label>  
+								<h:selectOneMenu
+									value="#{clienteController.instalacion.tecnico}"
+									id="txtEmpleado12345">
+									<f:selectItem itemLabel="Seleccionar" itemalue="Seleccionar"/>
+									<f:selectItems value="#{clienteController.empleados}"
+										var="empleado" itemLabel="#{empleado.nombre}"
+										itemValue="#{empleado.nombre}" />
+								</h:selectOneMenu>
+							</div>
+
 
 						<div class="modal-footer">
 							<h:commandButton class="btn btn-primary" data-dismiss="modal"
-								value="Guardar" action="#{instalacionController.crearInstalacion()}" />
+								value="Guardar" action="#{clienteController.crearInstalacion()}" />
 							<h:commandButton class="btn btn-danger" data-dismiss="modal"
-								value="Cerrar" action="clientes1" />
-						</div>
+								value="Cerrar" immediate="true" action="callcenter" />
+						
 					</div>
 				</div>
 			</div>

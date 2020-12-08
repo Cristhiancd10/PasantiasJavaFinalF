@@ -123,7 +123,7 @@ public class ClienteDAO {
 	}
 	
 	public Cliente buscarNombre(String nombre) {
-		String jpql = "SELECT cli FROM Cliente cli WHERE cli.nombre = :nombre";
+		String jpql = "SELECT cli FROM Cliente cli WHERE cli.nombre =  :nombre";
 		Query q = em.createQuery(jpql, Cliente.class);
 		q.setParameter("nombre", nombre);
 		Cliente clien = (Cliente) q.getSingleResult();
