@@ -15,6 +15,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -64,6 +65,8 @@ public class Registro implements Serializable {
 	@JoinColumn(name="cliregsitro_fk")
 	//modifico esto
 	//@JsonIgnore
+	//@JsonBackReference
+	@JsonManagedReference
 	private Cliente cliente;
 	
 	/*
@@ -73,8 +76,8 @@ public class Registro implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "regagendamiento_fk")
 	//modifico esto
-	//@JsonIgnore
-	@JsonManagedReference
+	@JsonIgnore
+	//@JsonManagedReference
 	private List<Agendamiento> agendamiento;
 	
 	@Transient

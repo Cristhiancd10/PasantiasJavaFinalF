@@ -67,7 +67,7 @@ public class AgendamientoDAO {
 				//agregue esto				
 				agendamiento.getRegistro().getCliente().getServicio().size();
 				agendamiento.getRegistro().getAccion();
-				agendamiento.getRegistro().getAgendamiento().size();
+				//agendamiento.getRegistro().getAgendamiento().size();
 				agendamiento.getRegistro().getCliente().getApellido();
 				
 			}

@@ -505,9 +505,11 @@ public class ClienteController implements Serializable {
 	 */
 	public String cargarDatos() {
 		try {
-			clion.guardar(cliente);
-			init();
-			return "clientesRadio";
+			if (validadorDeCedula(cliente.getCedula())) {
+				clion.guardar(cliente);
+				init();
+				return "clientesRadio";
+			}
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -57,7 +58,7 @@ public class Servicio implements Serializable {
 	 */
 	@OneToOne
 	@JoinColumn(name="cliservicio_fk")
-	@JsonIgnore
+	@JsonBackReference
 	private Cliente cliente ;
 	
 	@Transient

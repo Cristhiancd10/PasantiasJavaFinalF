@@ -50,7 +50,7 @@ public class Agendamiento {
 	@JoinColumn(name="regagendamiento_fk")
 	//modofique esto
 	//@JsonIgnore
-	@JsonBackReference
+	//@JsonBackReference
 	private Registro registro ;
 
 	public int getId() {

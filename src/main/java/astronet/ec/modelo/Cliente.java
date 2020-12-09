@@ -18,7 +18,9 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "Cliente")
@@ -86,7 +88,7 @@ public class Cliente implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "cliregsitro_fk")
 	//modofico esto
-	@JsonIgnore
+	@JsonBackReference
 	private List<Registro> registro;
 	
 
