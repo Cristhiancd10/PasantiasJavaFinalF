@@ -14,6 +14,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.swing.JOptionPane;
 
 import astronet.ec.modelo.Agendamiento;
 import astronet.ec.modelo.Antena;
@@ -1031,5 +1032,42 @@ public class ClienteController implements Serializable {
 		}
 		return null;
 	}
+		
+	// Validacion ip
+	   public boolean validaIPAddress(String ip){
+			int cnt = 0;
+			int[] aux = new int[20];
+			if(ip.indexOf(":") == -1){
+				for(String p : ip.split("\\.")){
+					++cnt;
+					
+					if(cnt > 4 || p.isEmpty() || (p.length() > 1 && p.charAt(0) == '0') || p.length() > 3)
+						return false;
+						
+						for(char c : p.toCharArray())
+							if(c < '0' || c > '9')
+								return false;
+							
+							int val = Integer.parseInt(p);
+							for (int i = 0; i < ip.length(); i++) {
+								
+								aux[i]=(int) Integer.parseInt(p);
+								
+							}
+							
+							if(val < 0 || val > 255)
+								return false;
+						}
+						
+			}
+			System.out.println(" aux "+aux[3]);
+			if (aux[3]== 255 || aux[3]== 0 || aux[3]== 1) {
+			 	System.out.println("ip no valida");
+			} else if (cnt == 4 && ip.charAt(ip.length() - 1) != '.') {
+				return true;
+			}
+			
+			return  false;
+		}
 
 }
